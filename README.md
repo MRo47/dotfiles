@@ -20,6 +20,10 @@ This installs:
 - `~/.config/starship.toml`
 - `~/.config/bash/terminal-setup.sh`
 
+It also appends a line to `~/.bashrc` sourcing the setup script, if one isn't there already. Re-running the installer won't add it twice.
+
+Then reload your shell (`source ~/.bashrc` or open a new terminal).
+
 ### With Nerd Font icons
 
 The Starship prompt config uses [Nerd Font](https://www.nerdfonts.com) glyphs (e.g. the git branch symbol), which regular fonts don't include. Pass `--fonts` to also download and install the JetBrains Mono Nerd Font to `~/.local/share/fonts`:
@@ -29,13 +33,3 @@ curl -fsSL https://raw.githubusercontent.com/MRo47/dotfiles/main/install.sh | ba
 ```
 
 After installing, set your terminal's font to "JetBrainsMono Nerd Font" for the icons to render correctly.
-
-## Enable
-
-Add this to your `~/.bashrc` to source the installed setup script:
-
-```bash
-[ -f "$HOME/.config/bash/terminal-setup.sh" ] && . "$HOME/.config/bash/terminal-setup.sh"
-```
-
-Then reload your shell (`source ~/.bashrc` or open a new terminal).

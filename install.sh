@@ -41,6 +41,17 @@ install_file() {
 install_file starship.toml "$HOME/.config/starship.toml"
 install_file bashrc.d/terminal-setup.sh "$HOME/.config/bash/terminal-setup.sh"
 
+# Hook the setup script into ~/.bashrc, unless it is already sourced there.
+BASHRC="$HOME/.bashrc"
+SOURCE_LINE='[ -f "$HOME/.config/bash/terminal-setup.sh" ] && . "$HOME/.config/bash/terminal-setup.sh"'
+
+if [ -e "$BASHRC" ] && grep -qF 'config/bash/terminal-setup.sh' "$BASHRC"; then
+  echo "$BASHRC already sources terminal-setup.sh, leaving it alone."
+else
+  printf '\n# dotfiles: bash prompt and completion setup\n%s\n' "$SOURCE_LINE" >> "$BASHRC"
+  echo "Added terminal-setup.sh to $BASHRC."
+fi
+
 if [ "$WITH_FONTS" -eq 1 ]; then
   echo "Installing $NERD_FONT Nerd Font..."
   FONT_DIR="$HOME/.local/share/fonts/$NERD_FONT-Nerd-Font"
