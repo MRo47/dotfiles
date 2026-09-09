@@ -1,7 +1,17 @@
-format = "$hostname$directory$git_branch\n$character"
+format = "${env_var.CLUSTER_NAME}$hostname$directory$git_branch\n$character"
 
+# Slurm cluster name, exported by bashrc.d/terminal-setup.sh.
+# Renders nothing when unset, i.e. everywhere that isn't an HPC login/compute node.
+[env_var.CLUSTER_NAME]
+variable = "CLUSTER_NAME"
+style = "bold yellow"
+format = "[$env_value::]($style)"
+
+# Hidden when CLUSTER_NAME is set: on HPC the cluster name is the useful
+# identifier and the node name is just noise.
 [hostname]
 ssh_only = false
+detect_env_vars = ["!CLUSTER_NAME"]
 style = "bold green"
 format = "[$hostname::]($style)"
 
