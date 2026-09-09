@@ -8,7 +8,7 @@ format = "[$path]($style) "
 [git_branch]
 symbol = " "
 format = "[$symbol$branch]($style)"
-style = "italic red"
+style = "bold italic red"
 
 [character]
 success_symbol = "[❯](cyan)"

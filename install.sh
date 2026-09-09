@@ -25,13 +25,21 @@ if ! command -v starship >/dev/null 2>&1; then
     sh -s -- -y -b "$HOME/.local/bin"
 fi
 
-curl -fsSL \
-  "$REPO_RAW/starship.toml" \
-  -o "$HOME/.config/starship.toml"
+# Use the clone's files when run from it; fall back to the repo when piped from curl.
+SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd || true)"
 
-curl -fsSL \
-  "$REPO_RAW/bashrc.d/terminal-setup.sh" \
-  -o "$HOME/.config/bash/terminal-setup.sh"
+install_file() {
+  src="$1"
+  dest="$2"
+  if [ -n "$SRC_DIR" ] && [ -f "$SRC_DIR/$src" ]; then
+    cp "$SRC_DIR/$src" "$dest"
+  else
+    curl -fsSL "$REPO_RAW/$src" -o "$dest"
+  fi
+}
+
+install_file starship.toml "$HOME/.config/starship.toml"
+install_file bashrc.d/terminal-setup.sh "$HOME/.config/bash/terminal-setup.sh"
 
 if [ "$WITH_FONTS" -eq 1 ]; then
   echo "Installing $NERD_FONT Nerd Font..."
