@@ -22,13 +22,13 @@ This installs:
 
 ### With Nerd Font icons
 
-The Starship prompt config uses [Nerd Font](https://www.nerdfonts.com) glyphs (e.g. the git branch symbol), which regular fonts don't include. Pass `--fonts` to also download and install the FiraCode Nerd Font to `~/.local/share/fonts`:
+The Starship prompt config uses [Nerd Font](https://www.nerdfonts.com) glyphs (e.g. the git branch symbol), which regular fonts don't include. Pass `--fonts` to also download and install the JetBrains Mono Nerd Font to `~/.local/share/fonts`:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/MRo47/dotfiles/main/install.sh | bash -s -- --fonts
 ```
 
-After installing, set your terminal's font to "FiraCode Nerd Font" for the icons to render correctly.
+After installing, set your terminal's font to "JetBrainsMono Nerd Font" for the icons to render correctly.
 
 ## Enable
 

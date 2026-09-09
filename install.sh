@@ -2,7 +2,7 @@
 set -euo pipefail
 
 REPO_RAW="https://raw.githubusercontent.com/MRo47/dotfiles/main"
-NERD_FONT="FiraCode"
+NERD_FONT="JetBrainsMono"
 
 WITH_FONTS=0
 for arg in "$@"; do
