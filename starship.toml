@@ -1,4 +1,9 @@
-format = "$directory$git_branch\n$character"
+format = "$hostname$directory$git_branch\n$character"
+
+[hostname]
+ssh_only = false
+style = "bold green"
+format = "[$hostname::]($style)"
 
 [directory]
 truncation_length = 1
