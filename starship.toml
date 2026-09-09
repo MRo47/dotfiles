@@ -1,0 +1,15 @@
+format = "$directory$git_branch\n$character"
+
+[directory]
+truncation_length = 1
+style = "bold cyan"
+format = "[$path]($style) "
+
+[git_branch]
+symbol = " "
+format = "[$symbol$branch]($style)"
+style = "italic red"
+
+[character]
+success_symbol = "[❯](cyan)"
+error_symbol = "[✗](cyan)"
